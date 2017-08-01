@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use app\assets\HomeAsset;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
+use yii\widgets\Breadcrumbs;
 
 HomeAsset::register($this);
 ?>
@@ -32,15 +33,15 @@ HomeAsset::register($this);
         <?= $this->render('//home/tab') ?>
         <!-- Tab END -->
         <aside class="topAdUnit text-center">
-            <div class="panel panel-default">
-                <div class="panel-body">Ad unit</div>
+            <div class="post-switcher">
+                <?= Breadcrumbs::widget([
+                    'homeLink' => ['label' => 'Головна', 'url' => [Url::to(['site/index'])]] ,
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
             </div>
         </aside>
         <div class="row">
             <?= $content ?>
-            <!-- BEGIN Sidebar -->
-            <?= $this->render('//home/sidebar') ?>
-            <!-- Sidebar END -->
         </div>
         <div class="container text-center">
             <?php

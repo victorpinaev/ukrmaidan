@@ -18,10 +18,13 @@ class HomeAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'static/slick/slick.css',
+        'static/slick/slick-theme.css',
         'static/css/main.css',
     ];
     public $js = [
         'static/js/main.js',
+        'static/slick/slick.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

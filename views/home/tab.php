@@ -47,63 +47,15 @@ $hidden_class = Yii::$app->controller->action->id != 'search' ? ' hidden' : '';
 ?>
 <!-- Include your modules here -->
 <div class="advanceSearch tabs tabs-style-tzoid<?= $hidden_class ?>">
-    <nav>
-        <ul id="advanceSearchTab" class="nav nav-tabs">
-            <li class="<?= $cat == 1 ? 'active' : '' ?>"><a href="#panel1">Movies</a>
-            </li>
-            <li class="<?= $cat == 2 ? 'active' : '' ?>"><a href="#panel2">TV Series</a>
-            </li>
-            <li class="<?= $cat == 3 ? 'active' : '' ?>"><a href="#panel3">Music</a>
-            </li>
-            <li class="<?= $cat == 4 ? 'active' : '' ?>"><a href="#panel4">eBooks</a>
-            </li>
-        </ul>
-    </nav>
     <div class="tab-content">
-        <div id="panel1" class="tab-pane fade <?= $cat == 1 ? ' active in' : '' ?>">
-            <?= Html::beginForm('/site/search', 'post', ['id' => 'advanceSearchMovies', 'class' => 'form-inline']) ?>
-                <input type="hidden" name="PostSearch[category_id]" value="1">
-                <input type="text" class="form-control" name="PostSearch[title]" placeholder="Title" value="<?= $title_1 ?>">
-                <input type="text" class="form-control" name="PostSearch[genre]" placeholder="Genre" value="<?= $genre_1 ?>">
-                <input type="text" class="form-control" name="PostSearch[producer]" placeholder="Director" value="<?= $producer_1 ?>">
-                <input type="text" class="form-control" name="PostSearch[issue]" placeholder="Year" value="<?= $issue_1 ?>">
-                <?= Html::dropDownList('PostSearch[extension]', $extension_1, Post::arrayExtension(), ['class' => 'form-control']) ?>
-                <button type="submit" class="btn btn-primary">Search</button>
-                <?= Html::endForm() ?>
-        </div>
-        <div id="panel2" class="tab-pane fade<?= $cat == 2 ? ' active in' : '' ?>">
-            <?= Html::beginForm('/site/search', 'post', ['id' => 'advanceSearchSeries', 'class' => 'form-inline']) ?>
-            <input type="hidden" name="PostSearch[category_id]" value="2">
-            <input type="text" class="form-control" name="PostSearch[title]" placeholder="Title" value="<?= $title_2 ?>">
-            <input type="text" class="form-control" name="PostSearch[genre]" placeholder="Genre" value="<?= $genre_2 ?>">
-            <input type="text" class="form-control" name="PostSearch[producer]" placeholder="Director" value="<?= $producer_2 ?>">
-            <input type="text" class="form-control" name="PostSearch[issue]" placeholder="Year" value="<?= $issue_2 ?>">
-            <?= Html::dropDownList('PostSearch[extension]', $extension_2, Post::arrayExtension(), ['class' => 'form-control']) ?>
-            <button type="submit" class="btn btn-primary">Search</button>
+        <?= Html::beginForm('/site/search', 'post', ['id' => 'advanceSearchMovies', 'class' => 'form-inline']) ?>
+            <input type="hidden" name="PostSearch[category_id]" value="1">
+            <input type="text" class="form-control" name="PostSearch[title]" placeholder="Title" value="<?= $title_1 ?>">
+            <input type="text" class="form-control" name="PostSearch[genre]" placeholder="Genre" value="<?= $genre_1 ?>">
+            <input type="text" class="form-control" name="PostSearch[producer]" placeholder="Director" value="<?= $producer_1 ?>">
+            <input type="text" class="form-control" name="PostSearch[issue]" placeholder="Year" value="<?= $issue_1 ?>">
+            <?= Html::dropDownList('PostSearch[extension]', $extension_1, Post::arrayExtension(), ['class' => 'form-control']) ?>
+            <button type="submit" class="btn btn-primary">Пошук</button>
             <?= Html::endForm() ?>
-        </div>
-        <div id="panel3" class="tab-pane fade<?= $cat == 3 ? ' active in' : '' ?>">
-            <?= Html::beginForm('/site/search', 'post', ['id' => 'advanceSearchMusic', 'class' => 'form-inline']) ?>
-            <input type="hidden" name="PostSearch[category_id]" value="3">
-            <input type="text" class="form-control" name="PostSearch[title]" placeholder="Title" value="<?= $title_3 ?>">
-            <input type="text" class="form-control" name="PostSearch[genre]" placeholder="Genre" value="<?= $genre_3 ?>">
-            <input type="text" class="form-control" name="PostSearch[producer]" placeholder="Director" value="<?= $producer_3 ?>">
-            <input type="text" class="form-control" name="PostSearch[issue]" placeholder="Year" value="<?= $issue_3 ?>">
-            <?= Html::dropDownList('PostSearch[extension]', $extension_3, Post::arrayExtension(), ['class' => 'form-control']) ?>
-            <button type="submit" class="btn btn-primary">Search</button>
-            <?= Html::endForm() ?>
-        </div>
-        <div id="panel4" class="tab-pane fade<?= $cat == 4 ? ' active in' : '' ?>">
-            <?= Html::beginForm('/site/search', 'post', ['id' => 'advanceSearchBooks', 'class' => 'form-inline']) ?>
-
-            <input type="hidden" name="PostSearch[category_id]" value="4">
-            <input type="text" class="form-control" name="PostSearch[title]" placeholder="Title" value="<?= $title_4 ?>">
-            <input type="text" class="form-control" name="PostSearch[genre]" placeholder="Genre" value="<?= $genre_4  ?>">
-            <input type="text" class="form-control" name="PostSearch[producer]" placeholder="Director" value="<?= $producer_4  ?>">
-            <input type="text" class="form-control" name="PostSearch[issue]" placeholder="Year" value="<?= $issue_4  ?>">
-            <?= Html::dropDownList('PostSearch[extension]', $extension_4, Post::arrayExtension(), ['class' => 'form-control']) ?>
-            <button type="submit" class="btn btn-primary">Search</button>
-            <?= Html::endForm() ?>
-        </div>
     </div>
 </div>

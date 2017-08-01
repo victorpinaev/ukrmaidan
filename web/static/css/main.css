@@ -410,7 +410,13 @@ $CustomFont: 'CustomFont', Helvetica, Arial, sans-serif;
 html, body {
   height: 100%;
 }
+.logo {
+  color: yellow;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: bold;
 
+}
 .page {
   background-color: #ECF0F1;
 }
@@ -1863,7 +1869,7 @@ html, body {
 }
 
 .page-header {
-  /*margin: 0;*/
+  margin: 0;
   padding: 40px 0;
   background-color: #34495E;
 }
@@ -1977,13 +1983,69 @@ html, body {
 }
 
 .sideAdUnit {
-  height: 500px;
+  /*height: 500px;*/
 }
 
 .sideAdUnit .panel {
-  height: inherit;
+  /*height: inherit;*/
 }
 
 .help-block {
   float: right;
 }
+
+.panel-body {
+
+}
+
+.ukr_main_page {
+  height: 530px;
+  background-image: url(../img/Ukrmaidan_fon.jpg);
+  padding-top: 100px;
+}
+.ukr_main_page h1 {
+  color: #FFF;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+.sidebar_title {
+  background-color: #DDD
+}
+
+.panel-body ul {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.category_block {
+  margin-top: 100px;
+  background-color: #bec2c5;
+}
+.category_block ul {
+  margin: 0;
+  padding: 0;
+}
+.category_block li {
+  list-style-type: none;
+  width: 100%;
+}
+.category_block li img {
+  width: 100%;
+  height: auto;
+}
+
+.panel-default {
+  background-color: #bec2c5;
+  border: 0;
+}
+
+
+/*for slider*/
+.slick-slide {
+  height: 500px;
+}
+.slick-slide img {
+  margin: 0 auto;
+}
+

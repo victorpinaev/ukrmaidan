@@ -34,30 +34,37 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PostSearch();
+
         $params = Yii::$app->request->queryParams;
-        $cat = isset($params['PostSearch']['category_id']) ? $params['PostSearch']['category_id'] : 1;
-        $query = $searchModel->postSearch($params);
+        //$cat = isset($params['PostSearch']['category_id']) ? $params['PostSearch']['category_id'] : 0;
+        $cat = isset($params['cat']) ? $params['cat'] : 0;
+        if ($cat) {
+            $searchModel = new PostSearch();
+            $query = $searchModel->postSearch($params);
 
-        $countQuery = clone $query;
-        $pages = new Pagination(
-            [
-                'totalCount' => $countQuery->count(),
-                'pageSize' => Yii::$app->params['count_post_in_frontend'],
-            ]
-        );
-        $pages->pageSizeParam = false;
-        $posts = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
+            $countQuery = clone $query;
+            $pages = new Pagination(
+                [
+                    'totalCount' => $countQuery->count(),
+                    'pageSize' => Yii::$app->params['count_post_in_frontend'],
+                ]
+            );
+            $pages->pageSizeParam = false;
+            $posts = $query->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
 
-        $this->view->params['pages'] = $pages;
+            $this->view->params['pages'] = $pages;
 
-        return $this->render('index', [
-            'posts' => $posts,
-            'cat' => $cat,
+            return $this->render('list', [
+                'posts' => $posts,
+                'cat' => $cat,
 
-        ]);
+            ]);
+        }
+
+        return $this->render('index');
+
     }
 
     /**

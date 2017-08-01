@@ -1,5 +1,6 @@
 <?php
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $post object*/
 /* @var $tags array*/
@@ -7,8 +8,19 @@ use yii\bootstrap\ActiveForm;
 /* @var $send_message_result bool or string*/
 /* @var $alert_message string*/
 
-$this->title = 'My Yii Application';
-$cookies = Yii::$app->request->cookies;
+$this->title = $post->title;
+$this->params['breadcrumbs'][] =
+[
+    'label' => $post->category->title,
+    'url' =>
+    [Url::to(
+        [
+            'site/index',
+            'cat' =>$post->category->id
+        ])
+    ]
+];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php
 if($send_message_result) {
@@ -24,9 +36,9 @@ if($send_message_result) {
     <?php
 } ?>
 
-<div class="col-lg-10">
+<div class="col-lg-12">
     <div class="post-wrap col-lg-12 panel panel-default">
-        <img class="post-banner pull-left" src="/uploads/<?= $post->img ?>" alt="post-banner" width="180" height="250">
+        <img class="post-banner pull-left" src="/uploads/<?= $post->img ?>" alt="post-banner" width="300">
         <h3 class="post-title"><?= $post->title ?><span class="year"><?= $post->issue ? '('.$post->issue.')' : '' ?></span></h3>
         <div class="duration">
             <?php
@@ -42,23 +54,6 @@ if($send_message_result) {
                 echo implode(', ', $tags['genre']);
             }
             ?>
-        </div>
-        <div class="rating-wrap">
-            <?php
-            $disabled = '';
-            $count = $post->rating_count ? $post->rating_count : 1;
-            $rating = round($post->rating/$count, 1);
-            $round = floor($rating);
-            if($cookies->has('key'.$post->id)) {
-                $s = Yii::$app->getSecurity();
-                if($s->validatePassword($post->id.'rating', $cookies['key'.$post->id]->value)) {
-                    $disabled = ' disabled';
-                }
-            }
-            ?>
-
-            <input type="text" class="rating post-rating" data-value="<?php echo $post->id; ?>" value="<?php
-            echo ($round  + 0.5 > $rating ? $round : $round  + 0.5 );?>"<?= $disabled; ?>>
         </div>
         <div class="description">
             <?= $post->description ?>
@@ -77,8 +72,8 @@ if($send_message_result) {
             }
             ?>
         </div>
-        <a href="/" class="lang lang__ru">in Russian</a>
-        <button class="btn-post btn-getTheLink btn btn-primary">Get the link</button>
+        <!--<a href="/" class="lang lang__ru">in Russian</a>
+        <button class="btn-post btn-getTheLink btn btn-primary">Get the link</button>-->
 
     </div>
 </div>
